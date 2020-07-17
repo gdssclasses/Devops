@@ -1,21 +1,19 @@
 Step01      git --version( check git version)
 Step02      pwd(present working directory)
-Step03      mkdir git
-Step04      cd git
-Step05      mkdir project
-Step06      cd project
-Step07      pwd
-Step08      git init
-Step09      ll -al
-Step11      vi test.txt
-Step12      ll
-Step13      git status
-Step14      git add test.txt
-Step15      git status
-Step16      git commit -m "test"
-Step17      git config --global user.name "GDSS"
-            git config --global user.email "hr@GDSS.in" 
-Step18      git status
+Step03      mkdir git (create a directory)
+Step04      cd git 
+Step05      git init
+Step06      ll -al
+Step07      git config --global user.name "GDSS"
+Step08      git config --global user.email "hr@GDSS.in" 
+Step07      vi test.txt(create a file)
+Step08      git status
+Step09      git add test.txt
+Step10      git status
+Step11      git commit -m "test"
+Step12      git status
+Step13             
+Step18      
 Step19      git log
 Step20      git log --online
 Step21      git log --oneline
