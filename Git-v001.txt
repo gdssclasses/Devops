@@ -12,61 +12,62 @@ Step09      git add test.txt
 Step10      git status
 Step11      git commit -m "test"
 Step12      git status
-Step13             
-Step18      
-Step19      git log
-Step20      git log --online
-Step21      git log --oneline
+Step13      git log       
+Step14      git log --oneline
+Step15      git ls-files
+Step16      vi test1.txt
+Step17      git status
+Step18      git add test1.txt
+Step19      git status
+Step20      git commit -m "test1"
+Step21      ll -al
 Step22      git ls-files
-Step23      vi test2
-Step24      ll
-Step25      git status
-Step26      git add index2.html
-Step27      git add test2
-Step28      git commit -m "second commit"
-Step29      git status
-Step30      git ls --files
-Step31      git ls -files
-Step32      git ls-files
-Step33      git oneline
-Step34      git log
-Step35      git log --oneline
-Step36      git show d287bde(commit id)
-Step37      git diff file1.txt
-Step38      git diff --staged file1.txt
-Step39      git config --global user.name "kushagra"
-Step40      git ls-files
-Step41      git rm file1.txt (delete file from local repo and working directory)
-Step42      git status
-Step43      git ls-files
-Step44      git commit -m "deleting file"
-Step45      git status
-Step46      ls
-Step47      git rm --cached test.txt(delete file from local repo only)
-Step48      ls
-Step49      git ls-files
-Step50      vi .gitignore
-Step51      git status
-Step52      git add .gitignore
-Step53      git commit -m "adding.gitignore"
-Step54      git commit --amend -m "changing commit message"
-Step55      git log --oneline
-Step56      git tag --a 1422104 -m "adding tags"
+Step23      git oneline
+Step24      git log
+Step25      git log --oneline
+Step26      git show d287bde(commit id)
+Step27      git diff file1.txt
+Step28      git diff file1.txt
+Step29      git diff --staged file1.txt
+Step30      git ls-files
+Step31      git rm file1.txt (delete file from local repo and working directory)
+Step32      git status
+Step33      git ls-files
+Step34      git commit -m "deleting file"
+Step35      git status
+Step36      ls
+Step38      git rm --cached test.txt(delete file from local repo only)
+Step38      ls
+Step39      git ls-files
+Step40      vi .gitignore (create a .gitignore file and add the deleted file) 
+Step41      git status
+Step42      git add .gitignore
+Step43      git commit -m "adding.gitignore"
+Step44      git commit --amend -m "changing commit message"
+Step45      git log --oneline
+Step46      git tag --a 1422104 -m "adding tags"
+Step47      git log --oneline
+Step48      git tag
+Step49      git tag --a v1 1422104 -m "adding tags"
+Step50      git tag --a v1.0 1422104 -m "adding tags"
+Step51      git revert ac20d5d
+Step52      git log --oneline
+Step53      git reset --hard d287bde
 Step57      git log --oneline
-Step58      git tag
-Step59      git tag --a v1 1422104 -m "adding tags"
-Step60      git tag --a v1.0 1422104 -m "adding tags"
-Step61      git revert ac20d5d
-Step62      git log --oneline
-Step63      git reset --hard d287bde
-Step64      git log --oneline
-Step65      git ls-files
+Step58      git ls-files
+Step59      
+Step60      
+Step61      
+Step62      
+Step63      
+Step64      
+Step65      
 
 Step66      git branch
 Step67      git checkout -b b1
 Step68      git branch
-Step69      uname -m
-Step70      uname -a
+Step69      
+Step70      
 Step71      git branch
 Step72      git checkout master
 Step73      git branch
