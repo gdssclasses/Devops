@@ -56,25 +56,24 @@ Step53      git reset --hard d287bde
 Step57      git log --oneline
 Step58      git ls-files
 Step59      
-Step60      
-Step61      
-Step62      
-Step63      
-Step64      
-Step65      
-
-Step66      git branch
-Step67      git checkout -b b1
-Step68      git branch
+Step60      git branch -(branch )
+Step61      git checkout -b b1 (create a new branch b1)
+Step62      git branch (check branch)
+Step63      git checkout master(switch to master branch)
+Step64      git branch
+Step65      pwd
+Step66      ll -al
+Step67      
+Step68      
 Step69      
 Step70      
-Step71      git branch
-Step72      git checkout master
-Step73      git branch
-Step74      pwd
-Step75      ll -al
-Step76      git branch
-Step77      git log --oneline master
+Step71      
+Step72      
+Step73      
+Step74      
+Step75      
+Step76      
+Step77      
 Step78      git log --oneline b1
 Step79      git branch
 Step80      ls
