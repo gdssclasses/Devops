@@ -22,22 +22,26 @@ Step19      git status
 Step20      git commit -m "test1"
 Step21      ll -al
 Step22      git ls-files
-Step23      git oneline
-Step24      git log
-Step25      git log --oneline
-Step26      git show d287bde(commit id)
-Step27      git diff file1.txt
-Step28      git diff file1.txt
-Step29      git diff --staged file1.txt
+Step23      git log (show the all commit details)
+Step24      git log --oneline(show the all commit details)
+Step25      git show d287bde(commit id- - > show the file details)
+Step26      vi test.txt
+Step27      git diff test.txt
+Step28      git add test.txt
+Step29      git commit -m "test"
 Step30      git ls-files
-Step31      git rm file1.txt (delete file from local repo and working directory)
+              vi test2.txt
+              git add test2.txt
+              git commit -m "test"
+Step31      git rm test2.txt (delete file from local repo and working directory)
 Step32      git status
 Step33      git ls-files
 Step34      git commit -m "deleting file"
 Step35      git status
 Step36      ls
-Step38      git rm --cached test.txt(delete file from local repo only)
+Step38      git rm --cached test2.txt(delete file from local repo only)
 Step38      ls
+            git status 
 Step39      git ls-files
 Step40      vi .gitignore (create a .gitignore file and add the deleted file) 
 Step41      git status
@@ -45,7 +49,7 @@ Step42      git add .gitignore
 Step43      git commit -m "adding.gitignore"
 Step44      git commit --amend -m "changing commit message"
 Step45      git log --oneline
-Step46      git tag --a 1422104 -m "adding tags"
+Step46      
 Step47      git log --oneline
 Step48      git tag
 Step49      git tag --a v1 1422104 -m "adding tags"
@@ -193,3 +197,5 @@ git push -u origin master
 
 git remote add origin https://github.com/gdssclasses/Devops.git
 git push -u origin master                
+
+git diff --staged test.txt ---
