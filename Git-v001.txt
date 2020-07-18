@@ -165,7 +165,7 @@ Step160    git ls-files
 Step161    vi file4.txt 
 Step162    git stash pop
 Step163    vi file4.txt 
-Step164    git remote add origin https://github.com/gdssclasses/Devops.git
+Step164    git remote add test1 'https://github.com/gdssclasses/testgit.git'
 Step165    git branch
 Step166    git push origin master
 Step167    git checkout -b b1
