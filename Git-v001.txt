@@ -125,26 +125,26 @@ Step121    git log b1
 Step122    pwd
 Step123    git status
 Step124    git ls-files
-Step125    vi kush.txt
+Step125    vi test5.txt
 Step126    vi test1.txt
-Step127    git status
-Step127    git stash
+Step127    git status 
+Step127    git stash    (file store to temp cell)
 Step128    git status
 Step129    git stash list
 Step130    git show stash@{0}
-Step131    git stash pop
+Step131    git stash pop (all uncommited file move from temp cell to working directory) 
 Step132    git status
 Step133    git stash
 Step134    git status
 Step135    git ls-files
-Step136    vi kush.txt 
+Step136    vi test5.txt 
 Step137    git stash list
 Step138    git show stash@{0}
 Step139    git stash pop
 Step140    git status
-Step141    vi kush.txt 
+Step141    vi test5.txt 
 Step142    ls
-Step143    git add kush.txt
+Step143    git add test5.txt
 Step144    git coomit -m "pushing changes"
 Step145    git commit -m "pushing changes"
 Step146    git status
@@ -156,7 +156,7 @@ Step151    git status
 Step152    git commit -a -m "pushinh changes"
 Step153    git status
 Step154    git log --oneline
-Step155    git diff 9d3af89 d1ac308
+Step155    git diff 9d3af89 d1ac308(check the difference)
 Step156    git status
 Step157    ls
 Step158    vi file4.txt
@@ -165,19 +165,19 @@ Step160    git ls-files
 Step161    vi file4.txt 
 Step162    git stash pop
 Step163    vi file4.txt 
-Step164    git remote add origin https://github.com/devopstrainer1/class.git
+Step164    git remote add origin https://github.com/gdssclasses/Devops.git
 Step165    git branch
 Step166    git push origin master
 Step167    git checkout -b b1
 Step168    git push origin b1
 Step169    git branch
 Step170    git ls-files
-Step171    git remote add origin https://github.com/devopstrainer1/class.git
+Step171    git remote add origin https://github.com/gdssclasses/Devops.git
 Step172    git remote -v
-Step173    git remote add github https://github.com/devopstrainer1/devops.git
+Step173    git remote add github https://github.com/gdssclasses/Devops.git
 Step174    git push github master
 Step175    git remote -v
-Step176    git remote add gitlab https://github.com/devopstrainer1/devops1.git
+Step176    git remote add gitlab https://github.com/gdssclasses/Devops.git
 Step177    git push gitlab master
 Step178    git pull gitlab master
 Step179    ls
