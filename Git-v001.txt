@@ -59,7 +59,7 @@ Step52      git log --oneline
 Step53      git reset --hard d287bde
 Step57      git log --oneline
 Step58      git ls-files
-Step59      
+Step59      ------------------End of Class ---------------------------------------------
 Step60      git branch -(branch )
 Step61      git checkout -b b1 (create a new branch b1)
 Step62      git branch (check branch)
@@ -145,7 +145,7 @@ Step140    git status
 Step141    vi test5.txt 
 Step142    ls
 Step143    git add test5.txt
-Step144    git coomit -m "pushing changes"
+Step144    
 Step145    git commit -m "pushing changes"
 Step146    git status
 Step147    git stash
