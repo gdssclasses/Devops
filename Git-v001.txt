@@ -65,69 +65,69 @@ Step61      git checkout -b b1 (create a new branch b1)
 Step62      git branch (check branch)
 Step63      git checkout master(switch to master branch)
 Step64      git branch
-Step65      pwd
-Step66      ll -al
-Step67      
-Step68      
-Step69      
-Step70      
-Step71      
-Step72      
-Step73      
-Step74      
-Step75      
-Step76      
-Step77      
-Step78      git log --oneline b1
-Step79      git branch
-Step80      ls
-Step81      touch file4.txt
-Step82      git add text4.txt
-Step83      git add file44.txt
-Step84      git add file4.txt
-Step85      git commit -m "adding file4.txt"
-Step86      git status
-Step87      git ls-files
-Step88      git checkout master
-Step89      git checkout b1
-Step90      git ls-files
-Step91      git checkout master
-Step92      ls
-Step93      vi file4.txt
-Step94      git commit -a -m "adding some changes"
-Step95      git status
-Step96      git branch
-Step97      git ls-files
-Step98      git checkout b1
-Step99      git merge master
-Step100     git ls-files
-Step101     git status
-Step102     git branch
-Step103     vi kush.txt
-Step104     git add kush.txt
-Step105     git commit -m "ading kush.txt file"
-Step106     git status
-Step107     ls-files
-Step108     git branch
-Step109     git checkout master
-Step110    git ls-files
-Step111    git merge b1
-Step112    git ls-files
-Step113    git branch
-Step114    git branch -d b1
-Step115    git branch
-Step116    got log --oneline b1
-Step117    git log --oneline b1
-Step118    git log --oneline master
-Step119    git log master
-Step120    !
-Step121    git log b1
-Step122    pwd
-Step123    git status
-Step124    git ls-files
-Step125    vi test5.txt
-Step126    vi test1.txt
-Step127    git status 
+Step65      git log --oneline b1
+Step66      touch file1.txt
+Step67      git add file1.txt
+Step68      git commit -m "adding file1.txt"
+Step69      git status
+Step70      git ls-files
+Step71      git checkout master(change branch to master)
+Step72      git checkout b1
+Step73      git ls-files
+Step74      git checkout master
+Step75      vi file2.txt
+Step76      git commit -a -m "adding some changes"(add and commit same time)
+Step77      git status
+Step78      git branch
+Step79      git ls-files
+Step80      git checkout b1
+Step81      git merge master
+Step82      git ls-files
+Step83      git status
+Step84      git branch
+Step85      vi temp.txt
+Step86      git add temp.txt
+Step87      git commit -m "ading temp.txt file"
+Step88      git status
+Step89      ls-files
+Step90      git branch
+Step91      git checkout master 
+Step92      git ls-files
+Step93      git merge b1( merge the current branch to b1 branch)  
+Step94      git ls-files 
+Step95      git branch(check the current branch)  
+Step96      git branch -d b1 (create new branch b1) 
+Step97      git branch 
+Step98      git log --oneline b1
+Step99      git log --oneline master 
+Step100     git log master 
+Step101     git log b1 
+Step102     git status
+Step103     git ls-files
+Step104     vi test1.txt 
+Step105     
+Step106     
+Step107     
+Step108     
+Step109    
+Step110    
+Step111    
+Step112    
+Step113    
+Step114    
+Step115    
+Step116    
+Step117    
+Step118    
+Step119    
+Step120    
+Step121    
+Step122    
+Step123    
+Step124    
+Step125    
+Step126    
+Step127     
 Step127    git stash    (file store to temp cell)
 Step128    git status
 Step129    git stash list
@@ -185,17 +185,3 @@ Step180    git pull gitlab master
 Step181    git remote -v
 Step182    git pull gitlab master
 Step183    git log --oneline
-Step184    ls
-Step185    git rm kush.txt
-Step186    git status
----------------------------------------------------
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/gdssclasses/Devops.git
-git push -u origin master
-
-git remote add origin https://github.com/gdssclasses/Devops.git
-git push -u origin master                
-
-git diff --staged test.txt ---
