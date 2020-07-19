@@ -37,8 +37,8 @@ Step31      git rm test2.txt (delete file from local repo and working directory)
 Step32      git status
 Step33      git ls-files
 Step34      git commit -m "deleting file"
-Step35      git status
-Step36      ls
+Step35      git add -A(add new file) , git add -U (add updated file) 
+Step36      git status
 Step38      git rm --cached test2.txt(delete file from local repo only)
 Step38      ls
             git status 
@@ -63,7 +63,7 @@ Step59      ------------------End of Class -------------------------------------
 Step60      git branch -(branch )
 Step61      git checkout -b b1 (create a new branch b1)
 Step62      git branch (check branch)
-Step63      git checkout master(switch to master branch)
+Step63      git checkout master/filename(switch to master branch)
 Step64      git branch
 Step65      git log --oneline b1
 Step66      touch file1.txt
@@ -105,10 +105,10 @@ Step101     git log b1
 Step102     git status
 Step103     git ls-files
 Step104     vi test1.txt 
-Step105     
-Step106     
-Step107     
-Step108     
+Step105     git stash    (file store to temp cell) 
+Step106     git status 
+Step107     git stash list
+Step108     git show stash@{0}
 Step109    
 Step110    
 Step111    
@@ -128,10 +128,10 @@ Step124
 Step125    
 Step126    
 Step127     
-Step127    git stash    (file store to temp cell)
-Step128    git status
-Step129    git stash list
-Step130    git show stash@{0}
+Step127    
+Step128    
+Step129    
+Step130    
 Step131    git stash pop (all uncommited file move from temp cell to working directory) 
 Step132    git status
 Step133    git stash
