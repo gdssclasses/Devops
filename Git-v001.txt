@@ -1,5 +1,6 @@
 Step01      git --version( check git version)
 Step02      pwd(present working directory)
+step02a     yum install git
 Step03      mkdir git (create a directory)
 Step04      cd git 
 Step05      git init
