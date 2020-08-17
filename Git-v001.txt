@@ -1,3 +1,4 @@
+Step00      sudo -i
 Step01      git --version( check git version)
 Step02      pwd(present working directory)
 step02a     yum install git
@@ -50,66 +51,67 @@ Step42      git add .gitignore
 Step43      git commit -m "adding.gitignore"
 Step44      git commit --amend -m "changing commit message"
 Step45      git log --oneline
-Step46      
-Step47      git log --oneline
-Step48      git tag
-Step49      git tag --a v1 1422104 -m "adding tags"
-Step50      git tag --a v1.0 1422104 -m "adding tags"
-Step51      git revert ac20d5d
-Step52      git log --oneline
-Step53      git reset --hard d287bde
-Step57      git log --oneline
-Step58      git ls-files
-Step59      ------------------End of Class ---------------------------------------------
-Step60      git branch -(branch )
-Step61      git checkout -b b1 (create a new branch b1)
-Step62      git branch (check branch)
-Step63      git checkout master/filename(switch to master branch)
-Step64      git branch
-Step65      git log --oneline b1
-Step66      touch file1.txt
-Step67      git add file1.txt
-Step68      git commit -m "adding file1.txt"
-Step69      git status
-Step70      git ls-files
-Step71      git checkout master(change branch to master)
-Step72      git checkout b1
-Step73      git ls-files
-Step74      git checkout master
-Step75      vi file2.txt
-Step76      git commit -a -m "adding some changes"(add and commit same time)
-Step77      git status
-Step78      git branch
-Step79      git ls-files
-Step80      git checkout b1
-Step81      git merge master
-Step82      git ls-files
-Step83      git status
-Step84      git branch
-Step85      vi temp.txt
-Step86      git add temp.txt
-Step87      git commit -m "ading temp.txt file"
-Step88      git status
-Step89      ls-files
-Step90      git branch
-Step91      git checkout master 
-Step92      git ls-files
-Step93      git merge b1( merge the current branch to b1 branch)  
-Step94      git ls-files 
-Step95      git branch(check the current branch)  
-Step96      git branch -d b1 (create new branch b1) 
-Step97      git branch 
-Step98      git log --oneline b1
-Step99      git log --oneline master 
-Step100     git log master 
-Step101     git log b1 
+Step46      git tag
+Step47      git tag --a v1.0 1422104 -m "adding tags"   - - > 1422104(commit id)
+Step48      git revert ac20d5d 
+Step49      git log --oneline
+Step50      git reset --hard d287bde
+Step51      git log --oneline
+Step52      git ls-files
+
+Step53      git branch ->(check your current branch )
+Step57      git checkout -b b1 (create a new branch b1)
+Step58      git branch ->(check your current branch )
+Step59      git checkout master/filename(switch to master branch)
+Step60      git branch
+Step61      git log --oneline b1
+Step62      touch file1.txt
+Step63      git add file1.txt
+Step64      git commit -m "adding file1.txt"
+Step65      git status
+Step66      git ls-files
+Step67      git checkout master(change branch to master)
+Step68      git checkout b1
+Step69      git ls-files
+Step70      git checkout master
+Step71      vi file2.txt
+Step72      git commit -a -m "adding some changes"(add and commit same time)
+Step73      git status
+Step74      git branch
+Step75      git ls-files
+Step76      git checkout b1
+Step77      git merge master
+Step78      git ls-files
+Step79      git status
+Step80      git branch
+Step81      vi temp.txt
+Step82      git add temp.txt
+Step83      git commit -m "ading temp.txt file"
+Step84      git status
+Step85      ls-files
+Step86      git branch
+Step87      git checkout master
+Step88      git ls-files
+Step89      git merge b1( merge the current branch to b1 branch)
+Step90      git ls-files
+Step91      git branch(check the current branch) 
+Step92      git branch -d b1 (create new branch b1)
+Step93      git branch  
+Step94      git log --oneline b1 
+Step95      git log --oneline master  
+Step96      git log master 
+Step97      git log b1 
+Step98      git status
+Step99      git ls-files 
+Step100     vi test1.txt 
+Step101     git stash(file store to temp cell) 
 Step102     git status
-Step103     git ls-files
-Step104     vi test1.txt 
-Step105     git stash    (file store to temp cell) 
-Step106     git status 
-Step107     git stash list
-Step108     git show stash@{0}
+Step103     git stash list
+Step104     git show stash@{0} 
+Step105      
+Step106      
+Step107     
+Step108     
 Step109    
 Step110    
 Step111    
