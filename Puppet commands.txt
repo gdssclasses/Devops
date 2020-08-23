@@ -1,0 +1,202 @@
+Puppet installation
+Commands to be executed on Puppet master
+vi /etc/hosts
+
+10.128.0.16/32     node-01
+10.128.0.15/32     master-1
+
+   75  ping node
+   76  rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+   77  yum install -y puppetserver
+   78  history
+   79  cd /etc/puppetlabs/puppet
+   80  ls
+   81  vi puppet.conf 
+       dns_alt_name = master-1
+       certname = master
+       environment = production (optional)
+  
+   82  systemctl start puppetserver
+   83  puppet cert list
+   84  puppet cert sign node-01.us-central1-a.c.polar-elf-234302.internal
+   85  puppet cert list
+   86  sudo /opt/puppetlabs/bin/puppet cert list --all
+Commands to be executed on puppet slaves
+vi /etc/hosts
+10.128.0.16/32     node-01
+10.128.0.15/32     master-1
+   36  ping master
+   37  rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+   38  yum install puppet
+   39  cd /etc/puppetlabs/
+   40  ls
+   41  cd puppet/
+   42  ls
+   43  vi puppet.conf 
+           server = master-1 
+   44  puppet resource service puppet ensure=running enable=true
+   45  puppet agent --test 
+
+-------------------------------------------------------------------------
+10.128.0.16/32     node-01
+10.128.0.15/32     master-1
+--------------------------------------------------------------------------
+/etc/puppetlabs/code/environments/production/manifests - -> create the file here
+
+run commands - - > puppet agent --test
+
+node 'node-1' {
+    file {'/info.txt':
+    ensure => 'present',  
+    content => "this is our first puppet file",
+    }
+
+    package{'httpd':
+    ensure => 'present',
+    }
+*** absent remove the package 
+*** purged 
+
+** rpm  -qa httpd - - > to check httpd have installed in your machine
+/** run the service httpd */ - -> comments
+
+    service{'httpd':
+    ensure =>'running',
+    enable =>'true',
+    }
+/* service httpd status */
+
+    service{'httpd':
+    ensure =>'stopped',
+    enable =>'true',
+   }
+    package { 'curl':
+    ensure => installed,
+   }
+}
+
+
+***** create a class
+node 'node' {
+      class {'linux':}
+node 'node1'{ 
+      class {'linux':}
+
+
+class linux {
+    file {'/info.txt':
+    ensure => 'present',  
+    content => "this is our first puppet file",
+    }
+
+    package{'httpd':
+    ensure => 'present',
+    }
+
+------------
+variables:- The dollar sign ($) tells Puppet that what follows is a variable name. Variable names must begin with a lowercase letter or an underscore,
+ though the rest of the name can also contain uppercase letters or numbers.
+
+A variable can contain different types of data; one such type is a String (like php7.0-cli),
+ but Puppet variables can also contain Number or Boolean values (true or false).
+----------
+$php_package = 'php7.0-cli'
+
+package { $php_package:
+  ensure => installed,
+}
+
+
+
+============================================================
+cron { 'run-puppet':
+  command => '/usr/local/bin/run-puppet',
+  hour    => '*',
+  minute  => '*/15',
+}
+
+
+--------------------------------------------------------------
+
+five components:
+---------------
+modules:-
+=======
+php browser
+apache webserver
+source code- git
+mysql database
+firewall settings
+
+mediawiki   - git
+
+-- create own module
+-- download built in module
+-- use builtin module in our own custom module
+
+puppet module generate (username-modulename)shyam-mediawiki --environment production( after hit enter its ask
+some question that is optional)
+---systemctl start puppetserver  (start the puppet master server)
+---cd /etc/puppetlabs/code/environments/production/	(master)
+---cd /etc/puppetlabs/code/environments/production/modules    ----(master module)
+---puppet parser validate  (validate the puppet prgm)
+==============================================
+---cd /etc/puppetlabs/puppet
+---puppet agent --test (check for change)
+---puppet module generate shyam-mediawiki --environment production
+
+-ll
+--cd manifests
+--ll
+-- cd /etc/puppetlabs/code/environments/production/
+--cd manifests
+
+node 'pnode01'{
+     class{'mediawiki':}
+  }
+
+-- rpm -qa *php*
+-- https://forge.puppet.com
+---cd /etc/puppetlabs/code/environments/production/modules
+
+--- puppet module install puppetlabs-apache
+--- puppet module install puppetlabs-vcsrepo
+--- puppet module install puppetlabs-mysql
+--- puppet module install puppetlabs-firewall
+---*go to mediawiki
+---cd mediawiki
+--- vi init.pp
+---
+====================================================
+class mediawiki {
+package {'php-mysql':
+      ensure =>'present',
+      }
+      package {'php-xml':
+      ensure => 'present',
+     }
+     class{'::apache':
+     docroot => '/var/www/html',
+     mpm_module => 'prefork',
+     subscribe => Package['php-mysql'],
+     }
+     class{'::apache::mod::php':}
+     vcsrepo { '/var/www/html':
+     ensure   => present,
+     provider => git,
+     source => "https://github.com/wikimedia/mediawiki.git",
+     revision => 'REL1_23',
+     }
+     class{ '::mysql::server':
+     root_password => 'training',
+     }
+     class{'::firewall':}
+     firewall{'000 allow http access':
+     port => '80',
+     proto => 'tcp',
+     action => 'accept',
+      }
+}
+
+ ==================================
+run with node machine ip address
