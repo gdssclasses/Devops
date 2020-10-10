@@ -1,214 +1,113 @@
-nagios-01
-step01:cd /etc/ssh
-
-step02:vi sshd_config
-
-**passwordauthentication yes  <- - change from no to yes
- 
-
-step03: systemctl restart sshd
-
-step04: getenforce --->(enforcing)
-        vi /etc/selinux/config
-       (SELINUX-PERMISSIVE)
-       setenforce Permissive 
-       getenforce
-
-*** install dependencies***
-step05: yum install -y httpd php php-cli gcc glibc-common gd gd-devel net-snmp openssl-dev wget unzip		
-
-Step06:useradd nagios
-
-step07:groupadd nagcmd
-
-Step08:usermod -a -G nagcmd nagios(add the user to the group with these commands)
-Step09:usermod -a -G nagcmd apache
-
-Step10:cd  /tmp
-Step11:wget https://assets.nagios.com/downloads/nagiosc  - -not required    
-Step12:wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.4.tar.gz
-
-Step13:wget https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
-
-Step14:tar -xvf nagios-4.3.4.tar.gz
-
-Step15:tar -xvf nagios-plugins-2.2.1.tar.gz
-
-Step16:ls -l
-
-Step17:cd nagios-4.3.4
-
-Step18: ./configure --with-command-group=nagcmd
-Step19: make all (rec compile the program)
-
-Step20: make install
-Step21: make install-config
-Step22: make install-commandmode
-Step23: make install-webconf
-Step24: cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/
-Step25: chown -R nagios:nagios  /usr/local/nagios/libexec/eventhandlers/
-Step26: /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-Step27: htpasswd -s -c /usr/local/nagios/etc/htpasswd.users nagiosadmin (password for nagios user)
-Step28: cd /tmp/nagios-plugins-2.2.1 
-Step29: ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
-Step30: make
-Step31: make all
-Step31: systemctl enable nagios
-Step31: systemctl enable httpd
-Step31: service nagios start
-Step31: systemctl status nagios
-------------------------------------------------------------------------------------------
-x--  ./configure --with-nagios-group=nagios --with-command-group=nagcmd
-
-
-make
-make all(rec compile the program) 
-
-make install
-
-make install-config
-make install-commandmode
-make install-webconf
-
-make install-init
-
-
-
-vi /usr/local/nagios/etc/objects/contacts.cfg
-
-
-
-
-cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/
-
-
-chown -R nagios:nagios  /usr/local/nagios/libexec/eventhandlers/
-
-/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-
-htpasswd -s -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
-
-cd /tmp/nagios-plugins-2.1.1
-
-
-./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
-
-make
-make all (safe check)
-systemctl enable nagios
-systemctl enable httpd
-service nagios start
-systemctl status nagios
-
------------------
-service issue
-
---sudo vi /etc/systemd/system/nagios.service
-
-add below
-========
-[Unit]
-Description=Nagios
-BindTo=network.target
-
-
-[Install]
-WantedBy=multi-user.target
-
-[Service]
-User=nagios
-Group=nagios
-Type=simple
-ExecStart=/usr/local/nagios/bin/nagios /usr/local/nagios/etc/nagios.cfg
-
-==========
-   sudo systemctl enable /etc/systemd/system/nagios.service
-   sudo systemctl  start nagios
-   sudo systemctl  restart nagios
-
-
-
-service nagios status
-systemctl start httpd
-34.74.122.163/nagios(external ip address)
-
-
-==================================================================
-vi /usr/local/nagios/etc/objects/contacts.cfg
-
-
-htpasswd -s -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
-
-service httpd start
-
-systemctl start httpd.service
-
-cd /root/nagios
-cd nagios-plugins-2.2.1/
-./configure --with-nagios-user=nagios --with-nagios-group=nagios
-
-make
-
-make install
-/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-
-chkconfig --add nagios
-
-chkconfig --level 35 nagios on
-
-chkconfig --add httpd
-
-systemctl enable nagios
-
-systemctl enable httpd
-
-service nagios start  
-===============================
-systemctl start httpd.service
-service nagios start
-
-cd /tmp/nagios-plugins-2.2.1
-
-cd /usr/local/nagios/etc
-
-systemctl restart nagios
-
-===============================================
-/usr/local/nagios/etc/objects/windows.cfg
-
-
-/usr/local/nagios/etc/servers
-
-
+- sed -i 's/SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
+-setenforce 0
+- yum -y update
+- yum install -y gcc glibc glibc-common wget unzip httpd php gd gd-devel perl postfix net-snmp
+- mkdir /nagios
+- cd /nagios
+- wget -O nagioscore.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.5.tar.gz
+- tar xvzf nagioscore.tar.gz
+- cd /nagios/nagioscore-nagios-4.4.5/
+- ./configure
+- make all
+- make install-groups-users
+- usermod -a -G nagios apache
+- make install
+- make install-init
+- make install-daemoninit
+- make install-commandmode
+- make install-config
+- make install-webconf
+- make install-exfoliation
+- firewall-cmd --zone=public --add-port=80/tcp --permanent
+- firewall-cmd --reload
+- htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+- systemctl start httpd.service
+- systemctl enable httpd.service
+- systemctl enable nagios.service
+- systemctl restart nagios.service
+- yum install -y gcc glibc glibc-common make gettext automake autoconf wget openssl-devel net-snmp net-snmp-utils epel-release
+- yum install -y perl-Net-SNMP
+- yum -y install nagios-plugins-all
+- cp /usr/lib64/nagios/plugins/check_* /usr/local/nagios/libexec/
+- systemctl restart nagios httpd 
+- yum install -y gcc glibc glibc-common openssl openssl-devel perl wget
+- yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+- yum -y update
+- yum -y install nrpe
+- firewall-cmd --permanent --add-port=5666/tcp
+- firewall-cmd --reload
+- systemctl enable nrpe.service
+-systemctl restart nrpe
+- 34.122.209.150/nagios
+- user: nagiosadmin
+- passwrd: hbti1234
+- /usr/lib64/nagios/plugins(plugin details)
+- 34.121.209.242//nagios
+====================================================================================================
+1. create a window machine on google cloud
+2. login in to created machine
+3. open the site https://www.nsclient.org/download(download nsclient++)
+4. cd /nagios/nagioscore-nagios-4.4.5/sample-config/
+5. vi nagios.cfg  
+6. cfg_file=/usr/local/nagios/etc/objects/windows.cfg (uncomment for window machine)
+7. vi /usr/local/nagios/etc/objects/windows.cfg
+
+Monitor window machine:
+========================
+-- window host machine 1
+define host {
+    use                     windows-server          ; Inherit default values from a template
+    host_name               winserver               ; The name we're giving to this host
+    alias                   My Windows Server       ; A longer name associated with the host
+    address                 192.168.1.2             ; IP address of the host
+}
+
+-- window host machine 1
+define host {
+    use                     windows-server          ; Inherit default values from a template
+    host_name               winserver               ; The name we're giving to this host
+    alias                   My Windows              ; A longer name associated with the host
+    address                 192.168.1.2             ; IP address of the host
+}
+
+8. systemctl restart nagios (after change restart the nagios)
+9. monitor the other linux machine
+10. yum -y install nrpe nagios-plugins-all (install on that machien)
+11 cd /etc/nagios
+12 server_address=34.121.209.242(uncomment and update with host machine ip address)  
+13 systemctl restart nrpe (restart the server)
+14 cd /usr/local/nagios/etc
+15 vi nagios.cfg
+16 cfg_dir=/usr/local/nagios/etc/servers(either we create a new directory structure or use existing one) 
+17 mkdir servers
+18 cd /usr/local/nagios/etc/servers
+19 cd /usr/local/nagios/etc/objects 
+20 vi localhost.cfg
+21: copy the below detail, 
+---------------------------
 # Define a host for the local machine
-define host{
-        use                     linux-server            ; Name of host template to use
-                                                        ; This host definition will inherit all variables that are defined
-                                                        ; in (or inherited by) the linux-server host template definition.
-        host_name               localhost
-        alias                   localhost
-        address                 127.0.0.1
-        }
-###############################################################################
+define host {
+    use                     linux-server            ; Name of host template to use
+                                                    ; This host definition will inherit all variables that are defined
+                                                    ; in (or inherited by) the linux-server host template definition.
+    host_name               node-01
+    alias                   node-01
+    address                 34.122.209.150
+}
 ###############################################################################
 #
 # HOST GROUP DEFINITION
 #
 ###############################################################################
-###############################################################################
 # Define an optional hostgroup for Linux machines
-define hostgroup{
-        hostgroup_name  linux-servers ; The name of the hostgroup
-        alias           Linux Servers ; Long name of the group
-        members         localhost     ; Comma separated list of hosts that belong to this group
-        }
+define hostgroup {
+    hostgroup_name          linux-server           ; The name of the hostgroup
+    alias                   Linux Server           ; Long name of the group
+    members                 node-01               ; Comma separated list of hosts that belong to this group
+}
 
-
-
-
-
-
-
-
-
-
+------------------------------------------------------------------------
+22 /usr/local/nagios/etc/servers
+ vi node-01.cfg (alwasy create with machine name which you want to monitor)
+23 paste the 21 details
+24 systemctl restart nagios
